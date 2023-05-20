@@ -1,60 +1,27 @@
-// Prompt 1. Clean the coffee_data.js file.
-const coffeeMenu = require("./data.js");
+const coffeeMenu = require("./coffee_data");
 
-console.log(coffeeMenu);
+// 2. Print an array of all the drinks on the menu.
+const allDrinks = coffeeMenu.map((drink) => drink.name);
+console.log("All Drinks:", allDrinks);
 
-// Prompt 2. Print an array of all the drinks on the coffeeMenu.
-// Print an array of arrays of all the items with their prices.
-// For example: [["cappuccino", 8], ["espresso", 5]];
-const coffeeMenu = require("./data.js");
+// 3. Print an array of drinks that cost 5 and under.
+const affordableDrinks = coffeeMenu.filter((drink) => drink.price <= 5);
+console.log("Affordable Drinks (5 and under):", affordableDrinks);
 
-const printName = (item) => {
-  return item.name;
-};
-console.log(coffeeMenu.map(printName));
+// 4. Print an array of drinks that are priced at an even number.
+const evenPricedDrinks = coffeeMenu.filter((drink) => drink.price % 2 === 0);
+console.log("Even Priced Drinks:", evenPricedDrinks);
 
-const priceArray = coffeeMenu.map((item) => {
-  return item.price;
-});
-console.log(priceArray);
+// 5. Print the total if you were to order one of every drink.
+const totalOrder = coffeeMenu.reduce((total, drink) => total + drink.price, 0);
+console.log("Total Order:", totalOrder);
 
-// Prompt 3. Print an array of all the drinks that are priced under 5.
-const underFive = (item) => {
-  return item.price <= 5;
-};
-const itemsUnderFive = coffeeMenu.filter(underFive);
-console.table(itemsUnderFive);
+// 6. Print an array with all the drinks that are seasonal.
+const seasonalDrinks = coffeeMenu.filter((drink) => drink.seasonal);
+console.log("Seasonal Drinks:", seasonalDrinks);
 
-
-// Prompt 4. Print an array of drinks that are priced at an even number.
-// Print the even price for the drinks.
-const numberOfItems = coffeeMenu.length;
-const evenPrice = totalPrice / numberOfItems;
-console.log(evenPrice);
-
-// Prompt 5. Print the total if you were to order one of every drink.
-//Print the total cost of the coffeeMenu array.
-const sumTotalCost = (accumulator, currentValue) => {
-  return accumulator + currentValue;
-};
-const totalPrice = priceArray.reduce(sumTotalCost);
-console.log(totalPrice);
-// Prompt 6. Print an array with all the drinks that are seasonal.
-// Print an array of all the items whose condition are "seasonal."
-const isseasonal = (item) => {
-  return item.condition === "seasonal";
-};
-const usedItems = coffeeMenu.filter(isseasonal);
-console.table(seasonalItems);
-
-// Prompt 7. Print all the seasonal drinks with the words "with imported beans" after the item name. For example: "affogato with imported beans".
-const seasonalItems = coffeeMenu.filter((item) => {
-  return item.condition === "seasonal" && item.name.includes("with imported beans");
-});
-console.table(seasonalItems);
-
-import { getCoffeeMenu } from "./data.js"
-
-const coffeeMenu = getCoffeeMenu();
-
-console.log(coffeeMenu);
+// 7. Print all the seasonal drinks with the words "with imported beans" after the item name.
+const seasonalDrinksWithBeans = seasonalDrinks.map(
+  (drink) => `${drink.name} with imported beans`
+);
+console.log("Seasonal Drinks with Imported Beans:", seasonalDrinksWithBeans);
